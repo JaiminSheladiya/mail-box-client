@@ -31,7 +31,7 @@ const Login = () => {
           returnSecureToken: true,
         }
       );
-
+      localStorage.setItem('userEmail', userData.email)
       toast("User Login successfully");
       dispatch(authActions.login(res.data.idToken));
       navigate("/");

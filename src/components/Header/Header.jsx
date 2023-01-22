@@ -7,6 +7,9 @@ const Header = () => {
       <Link className="text-white" to="/">
         HOME
       </Link>
+      <Link className="text-white" to="/sendmail">
+        SEND MAIL
+      </Link>
       <Link className="text-white" to="/auth">
         SIGNUP
       </Link>

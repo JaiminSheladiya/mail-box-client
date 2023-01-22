@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import HomePage from '../Pages/HomePage'
+import SendMail from '../Pages/SendMail';
 
 const AllRoutes = () => {
   const {isLogin,isLoginPage} = useSelector(state => state.auth)
@@ -11,6 +12,7 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/sendmail" element={<SendMail />} />
       <Route path="/auth" element={!isLoginPage ? <Signup /> : <Login />} />
     </Routes>
   );
