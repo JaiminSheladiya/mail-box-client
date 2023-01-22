@@ -7,8 +7,8 @@ const Header = () => {
       <Link className="text-white" to="/">
         HOME
       </Link>
-      <Link className="text-white" to="/sendmail">
-        SEND MAIL
+      <Link className="text-white" to="/inbox">
+        INBOX
       </Link>
       <Link className="text-white" to="/auth">
         SIGNUP

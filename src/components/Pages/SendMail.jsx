@@ -16,7 +16,6 @@ const SendMail = () => {
       }.json`,
       { mail: editorState, subject: subject, senderMail: senderMail }
     );
-    console.log(res);
   };
   return (
     <div>
