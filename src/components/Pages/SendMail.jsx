@@ -6,17 +6,20 @@ const SendMail = () => {
   const [editorState, setEditorState] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [subject, setSubject] = useState("");
+
+
   const handleSubmit = async () => {
-    console.log(editorState, userEmail, subject);
     const senderMail =
       localStorage.getItem("userEmail") || "jaimins365635@gmail.com";
     const res = await axios.post(
       `https://react-http-8f419-default-rtdb.firebaseio.com/inbox/${
         userEmail.split("@")[0]
       }.json`,
-      { mail: editorState, subject: subject, senderMail: senderMail }
+      { mail: editorState, subject: subject,isReaded : false, senderMail: senderMail }
     );
   };
+
+
   return (
     <div>
       <input

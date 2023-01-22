@@ -5,6 +5,7 @@ import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import HomePage from '../Pages/HomePage'
 import Inbox from '../Pages/Inbox';
+import Mail from '../Pages/Mail';
 import SendMail from '../Pages/SendMail';
 
 const AllRoutes = () => {
@@ -14,6 +15,7 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/inbox" element={<Inbox />} />
+      <Route path="/inbox/:id" element={<Mail/>} />
       <Route path="/sendmail" element={<SendMail />} />
       <Route path="/auth" element={!isLoginPage ? <Signup /> : <Login />} />
     </Routes>
