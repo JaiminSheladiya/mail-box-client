@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {RxDotFilled} from 'react-icons/rx'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,13 +10,16 @@ import {AiFillDelete } from 'react-icons/ai'
 const Inbox = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
+  
 
   useEffect(() => {      
-    dispatch(fetchAllMails())
+    const id = setInterval(() => {
+    dispatch(fetchAllMails());
+    }, 2000)
+    return ()=>clearInterval(id)
     }, [])
     
-    const { allMails } = useSelector((state) => state.mail)
-
+    const { allMails } = useSelector((state) => state.mail);
     
     const handleRead = async (id) => {
          const userEmail =
@@ -44,9 +47,8 @@ const Inbox = () => {
         </button>
         <div className="m-2 mx-5">
           {allMails?.map((e) => (
-            <div className="d-flex gap-3">
+            <div key={e.id} className="d-flex gap-3">
               <div
-                key={e.id}
                 style={{ cursor: "pointer", width: "90%" }}
                 className=" rounded-3 shadow p-3 d-flex justify-content-between"
                 onClick={() => {

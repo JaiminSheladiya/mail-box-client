@@ -4,8 +4,9 @@ import axios from "axios";
       localStorage.getItem("userEmail") || "jaimins365635@gmail.com";
 
 const initialState = {
-    allMails: [],
-    sendedMail : []
+  allMails: [],
+  sendedMail: [],
+  allMailsCount: 0,
 };
 
 export const fetchAllMails = createAsyncThunk('mail/fetchAllMails', async () => {
@@ -16,7 +17,7 @@ let s = []
         for (let key in res.data) {
           s.push({...res.data[key] , id : key})  
     }
-    return s
+    return [s, s.length];
 })
 
 export const deleteMail = createAsyncThunk('mail/deleteMail', async (id) => {
@@ -32,8 +33,7 @@ let s = []
         for (let key in res.data) {
           s.push({...res.data[key] , id : key})  
     }
-    console.log(s)
-    return s
+    return [s,s.length]
 
     
 })
@@ -64,10 +64,13 @@ const mailSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchAllMails.fulfilled, (state, action) => {
-            state.allMails = action.payload
+            state.allMails = action.payload[0]
+            state.allMailsCount = action.payload[1]
         })
         builder.addCase(deleteMail.fulfilled, (state,action) => {
-            state.allMails = action.payload
+            state.allMails = action.payload[0]
+            state.allMailsCount = action.payload[1];
+
         })
         builder.addCase(fetchSendedMail.fulfilled, (state, action) => {
           state.sendedMail = action.payload;

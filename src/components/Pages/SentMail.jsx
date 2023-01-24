@@ -15,7 +15,6 @@ const SentMail = () => {
   }, []);
 
   const { sendedMail } = useSelector((state) => state.mail);
-console.log(sendedMail)
  
 
   return (
@@ -28,9 +27,8 @@ console.log(sendedMail)
       </button>
       <div className="m-2 mx-5">
         {sendedMail?.map((e) => (
-          <div className="d-flex gap-3">
+          <div key={e.id} className="d-flex gap-3">
             <div
-              key={e.id}
               style={{ cursor: "pointer", width: "90%" }}
               className=" rounded-3 shadow p-3 d-flex justify-content-between"
             >

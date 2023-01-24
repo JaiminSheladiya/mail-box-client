@@ -11,7 +11,6 @@ import SentMail from '../Pages/SentMail';
 
 const AllRoutes = () => {
   const {isLogin,isLoginPage} = useSelector(state => state.auth)
- console.log(isLoginPage)
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

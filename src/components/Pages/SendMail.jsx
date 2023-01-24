@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { toast } from "react-toastify";
 const SendMail = () => {
   const [editorState, setEditorState] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -17,6 +18,7 @@ const SendMail = () => {
       }.json`,
       { mail: editorState, subject: subject,isReaded : false, senderMail: senderMail }
     );
+    toast('Mail sended successfully')
   };
 
 

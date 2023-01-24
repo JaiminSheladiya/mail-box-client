@@ -23,7 +23,6 @@ const Signup = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-      console.log(userData)
     if (userData.confirmpassword != userData.password)
       return toast("Please check confirm password..");
 
