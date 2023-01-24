@@ -25,21 +25,29 @@ const Inbox = () => {
     dispatch(fetchAllMails());
     
     }
-    
+  
+  
+  
     return (
       <>
         <button
-          className=" btn btn-primary mt-2"
+          className=" btn mx-5 btn-primary mt-2"
           onClick={() => navigate("/sendmail")}
         >
           COMPOESE
         </button>
+        <button
+          className=" btn btn-primary mt-2"
+          onClick={() => navigate("/sent")}
+        >
+          SENT
+        </button>
         <div className="m-2 mx-5">
           {allMails?.map((e) => (
-            <div className='d-flex gap-3'>
+            <div className="d-flex gap-3">
               <div
                 key={e.id}
-                style={{ cursor: "pointer" , width : '90%' }}
+                style={{ cursor: "pointer", width: "90%" }}
                 className=" rounded-3 shadow p-3 d-flex justify-content-between"
                 onClick={() => {
                   handleRead(e.id);
