@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, isFulfilled } from "@reduxjs/toolkit";
 import axios from "axios";
+import useFetch from "../customHooks/useFetch";
     const userEmail =
       localStorage.getItem("userEmail") || "jaimins365635@gmail.com";
 
@@ -12,7 +13,8 @@ const initialState = {
 export const fetchAllMails = createAsyncThunk('mail/fetchAllMails', async () => {
        const res = await axios.get(
          `https://react-http-8f419-default-rtdb.firebaseio.com/inbox/${userEmail.split('@')[0]}.json`
-         );
+  );
+
 let s = []
         for (let key in res.data) {
           s.push({...res.data[key] , id : key})  
